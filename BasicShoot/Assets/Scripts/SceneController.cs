@@ -1,0 +1,25 @@
+using UnityEngine;
+using System.Collections;
+
+public class SceneController : MonoBehaviour {
+    //如果想要在Inspector中暴露这个属性，但是不想让其他脚本修改它的值，就用[SerializeField]
+    [SerializeField]private GameObject enemyPrefab;
+    private GameObject _enemy;
+    
+    
+    // Use this for initialization
+	void Start () {
+	
+	}
+	
+	// Update is called once per frame
+	void Update () {
+	    if(_enemy == null)
+        {
+            _enemy = Instantiate(enemyPrefab) as GameObject;
+            _enemy.transform.position = new Vector3(0, 1, -12);
+            float angle = Random.Range(0, 360);
+            _enemy.transform.Rotate(0, angle, 0);
+        }
+	}
+}
